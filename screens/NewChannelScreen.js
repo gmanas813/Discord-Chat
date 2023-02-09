@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, StyleSheet, TextInput } from 'react-native';
 import uuid from 'react-native-uuid';
 import { useChatContext } from 'stream-chat-expo';
 import Button from '../components/Button';
@@ -15,7 +15,7 @@ const NewChannelScreen = () => {
         const channel=client.channel('team',uuid.v4(),{name});
         await channel.create();
         await channel.addMembers([userId]);
-        navigation.navigate("ChannelScreen",{channel});
+        navigation.navigate("ChannelScreen",{screen:"Chat",params:{channel}});
     }
 
     return (
